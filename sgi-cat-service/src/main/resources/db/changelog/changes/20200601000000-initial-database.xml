@@ -1,0 +1,134 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+  <changeSet author="master" id="20200601000000-unidad_medida_seq">
+    <createSequence sequenceName="unidad_medida_seq" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-seccion_seq">
+    <createSequence sequenceName="seccion_seq" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-servicio_seq">
+    <createSequence sequenceName="servicio_seq" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-tipo_reservable_seq">
+    <createSequence sequenceName="tipo_reservable_seq" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-tipo_fungible_seq">
+    <createSequence sequenceName="tipo_fungible_seq" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-registro_seq">
+    <createSequence sequenceName="registro_seq" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-supervision_seq">
+    <createSequence sequenceName="supervision_seq" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-unidad_medida">
+    <createTable tableName="unidad_medida">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="unidad_medida_pk" />
+      </column>
+      <column name="descripcion" type="VARCHAR(250)" />
+      <column name="abreviatura" type="VARCHAR(50)" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-seccion">
+    <createTable tableName="seccion">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="seccion_pk" />
+      </column>
+      <column name="nombre" type="VARCHAR(100)" />
+      <column name="descripcion" type="VARCHAR(250)" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-servicio">
+    <createTable tableName="servicio">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="servicio_pk" />
+      </column>
+      <column name="nombre" type="VARCHAR(100)" />
+      <column name="abreviatura" type="VARCHAR(10)" />
+      <column name="contacto" type="VARCHAR(100)" />
+      <column name="seccion_id" type="BIGINT" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-tipo_reservable">
+    <createTable tableName="tipo_reservable">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="tipo_reservable_pk" />
+      </column>
+      <column name="descripcion" type="VARCHAR(250)" />
+      <column name="duracion_min" type="INT" />
+      <column name="dias_ante_max" type="INT" />
+      <column name="reserva_multi" type="BOOLEAN" />
+      <column name="dias_vista_max_calen" type="INT" />
+      <column name="horas_ante_min" type="INT" />
+      <column name="horas_ante_anular" type="INT" />
+      <column name="estado" type="VARCHAR(50)" />
+      <column name="servicio_id" type="BIGINT" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-tipo_fungible">
+    <createTable tableName="tipo_fungible">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="tipo_fungible_pk" />
+      </column>
+      <column name="nombre" type="VARCHAR(250)" />
+      <column name="servicio_id" type="BIGINT" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-registro">
+    <createTable tableName="registro">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="registro_pk" />
+      </column>
+      <column name="usuario_ref" type="VARCHAR(50)" />
+      <column name="servicio_id" type="BIGINT" />
+      <column name="estado_registro" type="VARCHAR(50)" />
+      <column name="entrega_papel" type="BOOLEAN" />
+      <column name="acepta_condiciones" type="BOOLEAN" />
+      <column name="observaciones" type="VARCHAR(250)" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-supervision">
+    <createTable tableName="supervision">
+      <column name="id" type="BIGINT">
+        <constraints nullable="false" primaryKey="true" primaryKeyName="supervision_pk" />
+      </column>
+      <column name="usuario_ref" type="VARCHAR(250)" />
+      <column name="servicio_id" type="BIGINT" />
+    </createTable>
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-servicio_seccion_FK">
+    <addForeignKeyConstraint baseColumnNames="seccion_id" baseTableName="servicio" constraintName="servicio_seccion_FK" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="seccion" validate="true" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-tipo_fungible_servicio_FK">
+    <addForeignKeyConstraint baseColumnNames="servicio_id" baseTableName="tipo_fungible" constraintName="tipo_fungible_servicio_FK" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="servicio" validate="true" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-supervision_servicio_FK">
+    <addForeignKeyConstraint baseColumnNames="servicio_id" baseTableName="supervision" constraintName="supervision_servicio_FK" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="servicio" validate="true" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-tipo_reservable_servicio_FK">
+    <addForeignKeyConstraint baseColumnNames="servicio_id" baseTableName="tipo_reservable" constraintName="tipo_reservable_servicio_FK" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="servicio" validate="true" />
+  </changeSet>
+
+  <changeSet author="master" id="20200601000000-registro_servicio_FK">
+    <addForeignKeyConstraint baseColumnNames="servicio_id" baseTableName="registro" constraintName="registro_servicio_FK" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="servicio" validate="true" />
+  </changeSet>
+</databaseChangeLog>

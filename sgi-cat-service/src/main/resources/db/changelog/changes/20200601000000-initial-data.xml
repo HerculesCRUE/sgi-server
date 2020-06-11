@@ -1,0 +1,195 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+  <changeSet author="master" id="20200601000000-unidad_medida">
+    <insert tableName="unidad_medida">
+      <column name="id" value="1" />
+      <column name="abreviatura" value="UM1" />
+      <column name="descripcion" value="UnidadMedida1" />
+    </insert>
+    <insert tableName="unidad_medida">
+      <column name="id" value="2" />
+      <column name="abreviatura" value="UM2" />
+      <column name="descripcion" value="UnidadMedida2" />
+    </insert>
+    <insert tableName="unidad_medida">
+      <column name="id" value="3" />
+      <column name="abreviatura" value="UM3" />
+      <column name="descripcion" value="UnidadMedida3" />
+    </insert>
+    <insert tableName="unidad_medida">
+      <column name="id" value="4" />
+      <column name="abreviatura" value="UM4" />
+      <column name="descripcion" value="UnidadMedida4" />
+    </insert>
+    <insert tableName="unidad_medida">
+      <column name="id" value="5" />
+      <column name="abreviatura" value="UM5" />
+      <column name="descripcion" value="UnidadMedida5" />
+    </insert>
+    <insert tableName="unidad_medida">
+      <column name="id" value="6" />
+      <column name="abreviatura" value="UM6" />
+      <column name="descripcion" value="UnidadMedida6" />
+    </insert>
+  </changeSet>
+  <changeSet author="master" id="20200601000000-seccion">
+    <insert tableName="seccion">
+      <column name="id" value="1" />
+      <column name="nombre" value="Sec1" />
+      <column name="descripcion" value="Seccion1" />
+    </insert>
+    <insert tableName="seccion">
+      <column name="id" value="2" />
+      <column name="nombre" value="Sec2" />
+      <column name="descripcion" value="Seccion2" />
+    </insert>
+    <insert tableName="seccion">
+      <column name="id" value="3" />
+      <column name="nombre" value="Sec3" />
+      <column name="descripcion" value="Seccion3" />
+    </insert>
+    <insert tableName="seccion">
+      <column name="id" value="4" />
+      <column name="nombre" value="Sec4" />
+      <column name="descripcion" value="Seccion4" />
+    </insert>
+    <insert tableName="seccion">
+      <column name="id" value="5" />
+      <column name="nombre" value="Sec5" />
+      <column name="descripcion" value="Seccion5" />
+    </insert>
+  </changeSet>
+  <changeSet author="master" id="20200601000000-servicio">
+    <insert tableName="servicio">
+      <column name="id" value="1" />
+      <column name="nombre" value="Servicio1" />
+      <column name="abreviatura" value="Serv1" />
+      <column name="contacto" value="Nombre Apellidos 1" />
+      <column name="seccion_id" value="1" />
+    </insert>
+    <insert tableName="servicio">
+      <column name="id" value="2" />
+      <column name="nombre" value="Servicio2" />
+      <column name="abreviatura" value="Serv2" />
+      <column name="seccion_id" value="2" />
+    </insert>
+    <insert tableName="servicio">
+      <column name="id" value="3" />
+      <column name="nombre" value="Servicio3" />
+      <column name="abreviatura" value="Serv3" />
+      <column name="seccion_id" value="2" />
+    </insert>
+    <insert tableName="servicio">
+      <column name="id" value="4" />
+      <column name="nombre" value="Servicio4" />
+      <column name="abreviatura" value="Serv4" />
+      <column name="seccion_id" value="5" />
+    </insert>
+    <insert tableName="servicio">
+      <column name="id" value="5" />
+      <column name="nombre" value="Servicio5" />
+      <column name="abreviatura" value="Serv5" />
+      <column name="seccion_id" value="3" />
+    </insert>
+  </changeSet>
+  <changeSet author="master" id="20200604000000-tipo_reservable">
+    <insert tableName="tipo_reservable">
+      <column name="id" value="1" />
+      <column name="descripcion" value="TipoReservable1" />
+      <column name="duracion_min" value="2" />
+      <column name="dias_ante_max" value="2" />
+      <column name="reserva_multi" value="1" />
+      <column name="dias_vista_max_calen" value="3" />
+      <column name="horas_ante_min" value="3" />
+      <column name="horas_ante_anular" value="4" />
+      <column name="estado" value="alta" />
+      <column name="servicio_id" value="1" />
+    </insert>
+    <insert tableName="tipo_reservable">
+      <column name="id" value="2" />
+      <column name="descripcion" value="TipoReservable2" />
+      <column name="duracion_min" value="2" />
+      <column name="dias_ante_max" value="2" />
+      <column name="reserva_multi" value="0" />
+      <column name="dias_vista_max_calen" value="3" />
+      <column name="horas_ante_min" value="3" />
+      <column name="horas_ante_anular" value="4" />
+      <column name="estado" value="alta" />
+      <column name="servicio_id" value="2" />
+    </insert>
+    <insert tableName="tipo_reservable">
+      <column name="id" value="3" />
+      <column name="descripcion" value="TipoReservable3" />
+      <column name="duracion_min" value="2" />
+      <column name="dias_ante_max" value="2" />
+      <column name="reserva_multi" value="1" />
+      <column name="dias_vista_max_calen" value="3" />
+      <column name="horas_ante_min" value="3" />
+      <column name="horas_ante_anular" value="4" />
+      <column name="estado" value="baja" />
+      <column name="servicio_id" value="3" />
+    </insert>
+  </changeSet>
+  <changeSet author="master" id="20200603000000-tipo_fungible">
+    <insert tableName="tipo_fungible">
+      <column name="id" value="1" />
+      <column name="nombre" value="TipoFungible1" />
+      <column name="servicio_id" value="1" />
+    </insert>
+    <insert tableName="tipo_fungible">
+      <column name="id" value="2" />
+      <column name="nombre" value="TipoFungible2" />
+      <column name="servicio_id" value="2" />
+    </insert>
+  </changeSet>
+  <changeSet author="master" id="20200604000000-registro">
+    <insert tableName="registro">
+      <column name="id" value="1" />
+      <column name="usuario_ref" value="user-1090" />
+      <column name="servicio_id" value="1" />
+      <column name="estado_registro" value="activo" />
+      <column name="entrega_papel" value="true" />
+      <column name="acepta_condiciones" value="true" />
+      <column name="observaciones" value="Registro activo servicio 1" />
+    </insert>
+    <insert tableName="registro">
+      <column name="id" value="2" />
+      <column name="usuario_ref" value="user-2090" />
+      <column name="servicio_id" value="2" />
+      <column name="estado_registro" value="inactivo" />
+      <column name="entrega_papel" value="true" />
+      <column name="acepta_condiciones" value="false" />
+      <column name="observaciones" value="Registro inactivo servicio 2" />
+    </insert>
+    <insert tableName="registro">
+      <column name="id" value="3" />
+      <column name="usuario_ref" value="user-2090" />
+      <column name="servicio_id" value="2" />
+      <column name="estado_registro" value="activo" />
+      <column name="entrega_papel" value="false" />
+      <column name="acepta_condiciones" value="true" />
+      <column name="observaciones" value="Registro activo servicio 2" />
+    </insert>
+    <insert tableName="registro">
+      <column name="id" value="4" />
+      <column name="usuario_ref" value="user-2090" />
+      <column name="servicio_id" value="4" />
+      <column name="estado_registro" value="activo" />
+      <column name="entrega_papel" value="true" />
+      <column name="acepta_condiciones" value="true" />
+      <column name="observaciones" value="Registro activo servicio 4" />
+    </insert>
+  </changeSet>
+  <changeSet author="master" id="20200603000000-supervision">
+    <insert tableName="supervision">
+      <column name="id" value="1" />
+      <column name="usuario_ref" value="UsuarioRef1" />
+      <column name="servicio_id" value="1" />
+    </insert>
+    <insert tableName="supervision">
+      <column name="id" value="2" />
+      <column name="usuario_ref" value="UsuarioRef2" />
+      <column name="servicio_id" value="2" />
+    </insert>
+  </changeSet>
+</databaseChangeLog>
